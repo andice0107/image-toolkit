@@ -13,7 +13,7 @@ GitHub：https://github.com/andice0107/image-toolkit
 | librsvg | SVG 轉 PNG（`rsvg-convert`） | `brew install librsvg` | 改用 Inkscape 或 sharp | `sudo apt install librsvg2-bin` | 2.63.4 已裝 | 未裝（改用 Inkscape／sharp） |
 | Inkscape | 向量圖編輯與轉檔 | `brew install --cask inkscape` | `winget install --id Inkscape.Inkscape -e` | `sudo apt install inkscape` | 1.4.4 已裝 | 1.4.4 已裝 |
 | Python 3.12 | Pillow、ComfyUI 的執行環境 | `brew install python@3.12` | `winget install --id Python.Python.3.12 -e` | `sudo apt install python3.12 python3.12-venv` | 3.12.16 已裝 | 3.12.10 已裝 |
-| Pillow | 程式化畫圖、加文字、拼圖 | `python3.12 -m venv venv && venv/bin/pip install pillow` | `py -3.12 -m venv venv; venv\Scripts\pip install pillow` | 同 Mac | 13.0.0 已裝 | 12.3.0 已裝 |
+| Pillow | 程式化畫圖、加文字、拼圖 | `python3.12 -m venv venv && venv/bin/pip install pillow` | `py -3.12 -m venv venv; venv\Scripts\pip install pillow` | 同 Mac | 13.0.0 已裝 | 13.0.0 已裝（`%USERPROFILE%\image-toolkit\venv`；全域 12.3.0） |
 | sharp | Node 高速圖片處理 | `npm i sharp` | `npm i sharp` | `npm i sharp` | 已裝 | 已裝（`%USERPROFILE%\image-toolkit`） |
 | Playwright | 把 HTML/SVG 排版截成 PNG | `npm i playwright && npx playwright install chromium` | 同左 | 同左，另需 `npx playwright install-deps` | 已裝 | 已裝（chromium-1248） |
 
