@@ -7,6 +7,8 @@ function Ensure-UserPath([string]$PathToAdd) {
     if ($parts -notcontains $PathToAdd) {
         [Environment]::SetEnvironmentVariable('PATH', (($parts + $PathToAdd) -join ';'), 'User')
         Write-Host "已加入使用者 PATH：$PathToAdd"
+    } else {
+        Write-Host "PATH 已存在，略過寫入：$PathToAdd"
     }
     if (($env:PATH -split ';') -notcontains $PathToAdd) { $env:PATH = "$($env:PATH);$PathToAdd" }
 }
@@ -35,6 +37,7 @@ npx playwright install chromium
 
 # 驗證（找不到通常是 PATH 還沒進到這個終端機，重開即可）
 Write-Host '--- 驗證 ---'
+$missing = 0
 foreach ($c in @(
         @('magick', @('-version')),
         @('inkscape', @('--version')),
@@ -46,6 +49,14 @@ foreach ($c in @(
         $out = & $name @($c[1]) 2>&1 | Select-Object -First 1
         Write-Host ("{0,-9} {1}" -f $name, $out)
     } else {
+        $missing++
         Write-Host ("{0,-9} 未找到，請重開終端機後再驗證" -f $name)
     }
 }
+
+if ($missing -gt 0) {
+    Write-Host ("完成，但有 {0} 項找不到，請重開終端機後再驗證。" -f $missing)
+    exit 1
+}
+Write-Host '完成，所有項目驗證通過。'
+exit 0
